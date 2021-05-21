@@ -40,4 +40,4 @@ var config = {
 
 
 ## Installation 
-Dieses Modul enthält aus Copyrightgründen nicht die Losungen an sich. Diese müssen von www.losungen.de als CSV (Tab getrennt) heruntergeladen werden und im Modulverzeichnis als losungen.csv gespeichert werden.
+<!-- Dieses Modul enthält aus Copyrightgründen nicht die Losungen an sich. Diese müssen von www.losungen.de als CSV (Tab getrennt) heruntergeladen werden und im Modulverzeichnis als losungen.csv gespeichert werden. -->
