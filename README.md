@@ -6,8 +6,8 @@ This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror
 
 ```shell
 cd ~/MagicMirror/modules
-git clone https://github.com/shbatm/MMM-OnScreenMenu
-cd MMM-OnScreenMenu/
+git clone https://github.com/Dobherrmann/MMM-Losung.git
+cd MMM-Losung
 npm install
 ```
 
@@ -37,3 +37,7 @@ var config = {
 | Option                | Description
 |-----------------------|-----------
 | `updateInterval` | *Optional* - The rate (in ms) in which the module will refresh the train data.
+
+
+## Installation 
+Dieses Modul enthält aus Copyrightgründen nicht die Losungen an sich. Diese müssen von www.losungen.de als CSV (Tab getrennt) heruntergeladen werden und im Modulverzeichnis als losungen.csv gespeichert werden.
