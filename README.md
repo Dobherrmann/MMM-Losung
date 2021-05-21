@@ -1,6 +1,6 @@
 # MMM-Losung - German Losung for MagicMirror²
 
-This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/).
+This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/). It will display the daily verse of the day from  www.losungen.de. You have to download the *.xml file from their website and place that *.xml file in the root folder of the module. 
 
 ## Installation
 
@@ -24,7 +24,6 @@ var config = {
       config: {
         updateInterval: 3000, // 3 * 1000 -> 3s
         filename: "Losungen Free 2021.xml",
-        fadeSpeed: 0,
         showDailyText: true,
         showTeachingText: true,
       },
@@ -37,6 +36,7 @@ var config = {
 | Option                | Description
 |-----------------------|-----------
 | `updateInterval` | *Optional* - The rate (in ms) in which the module will refresh the train data.
+| `filename` | Add the filename of the *xml file with all 'Losungen' (daily bible verses)
 
 
 ## Installation 
