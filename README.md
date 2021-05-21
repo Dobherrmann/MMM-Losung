@@ -37,7 +37,9 @@ var config = {
 |-----------------------|-----------
 | `updateInterval` | *Optional* - The rate (in ms) in which the module will refresh the train data.
 | `filename` | Add the filename of the *xml file with all 'Losungen' (daily bible verses)
+| `showDailyText` | *Optional* - Show daily bible verse
+| `showTeachingText` |  *Optional* - Show additional teaching text
 
 
-## Installation 
-<!-- Dieses Modul enthält aus Copyrightgründen nicht die Losungen an sich. Diese müssen von www.losungen.de als CSV (Tab getrennt) heruntergeladen werden und im Modulverzeichnis als losungen.csv gespeichert werden. -->
+## Additional informations 
+Due to copyright reasons, this module does not contain the lottery tickets themselves. These must be downloaded from www.losungen.de as an xml file (tab separated) and saved in the module directory.
