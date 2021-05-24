@@ -16,7 +16,6 @@ npm install
 To use this module, add the following configuration block to the modules array in the `config/config.js` file:
 
 ```js
-var config = {
   modules: [
     {
       module: "MMM-Losung",
@@ -29,7 +28,6 @@ var config = {
       },
     },
   ],
-};
 ```
 ## Configuration options
 
