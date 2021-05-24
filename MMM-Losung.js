@@ -109,6 +109,7 @@ Module.register("MMM-Losung",
         },
 
         socketNotificationReceived: function (notification, payload) {
+            console.log(notification, payload)
             let self = this;
             if (notification === 'Error')
                 console.log(self.name, "Error in helper Module", payload)
