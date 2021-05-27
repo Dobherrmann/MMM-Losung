@@ -2,6 +2,8 @@
 
 This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/). It will display the daily verse of the day from  www.losungen.de (direct link: https://www.losungen.de/download/). You have to download the *.xml file from their website and place that *.xml file in the root folder of the module. 
 
+![Exemple ](/Example.JPG)
+
 ## Installation
 
 ```shell
@@ -37,7 +39,6 @@ To use this module, add the following configuration block to the modules array i
 | `filename` | Add the filename of the *xml file with all 'Losungen' (daily bible verses)
 | `showDailyText` | *Optional* - Show daily bible verse
 | `showTeachingText` |  *Optional* - Show additional teaching text
-
 
 ## Additional informations 
 Due to copyright reasons, this module does not contain the lottery tickets themselves. These must be downloaded from www.losungen.de as an xml file (tab separated) and saved in the module directory.
