@@ -1,6 +1,6 @@
 # MMM-Losung - German Losung for MagicMirror²
 
-This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/). It will display the daily verse of the day from  www.losungen.de. You have to download the *.xml file from their website and place that *.xml file in the root folder of the module. 
+This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/). It will display the daily verse of the day from  www.losungen.de (direct link: https://www.losungen.de/download/). You have to download the *.xml file from their website and place that *.xml file in the root folder of the module. 
 
 ## Installation
 
