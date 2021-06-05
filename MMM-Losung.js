@@ -41,7 +41,9 @@ Module.register("MMM-Losung",
         getData: function (self) {
             self.MoravianData = null;
             self.DailyMoravian = null;
-            self.sendSocketNotification('OpenFile', self.defaults.filename);
+            // self.sendSocketNotification('OpenFile', self.defaults.filename);
+            self.sendSocketNotification('GetDataFromWeb', 'dummyURL');
+            // self._getWebData()
         },
 
         getDom: function () {
@@ -49,7 +51,7 @@ Module.register("MMM-Losung",
             let wrapper = document.createElement("div");
             wrapper.classList.add("moravian-container");
 
-            if (self.DailyMoravian === null)
+            if (self.DailyMoravian === null || self.DailyMoravian === undefined)
                 wrapper.innerHTML = "Data get loaded";
             else {
                 // Moravian texts are loaded
@@ -69,20 +71,20 @@ Module.register("MMM-Losung",
                 wrapper.appendChild(teachingTextElement);
 
 
-                if (dailyTextElement !== undefined && teachingTextElement !== undefined){
+                if (dailyTextElement !== undefined && teachingTextElement !== undefined) {
                     dailyTextElement.style.display = self.config.showDailyText ? "block" : "none";
 
-                    if(self.config.showTeachingText){
+                    if (self.config.showTeachingText) {
                         teachingTextElement.style.display = "block";
                     }
-                    else{
+                    else {
                         teachingTextElement.style.display = "none";
                         dailyTextElement.classList.remove("moravian-moravian")
                         console.log(dailyTextElement.classList)
                     }
                 }
-               
-                console.log(self.config.showDailyText,self.config.showTeachingText)
+
+                console.log(self.config.showDailyText, self.config.showTeachingText)
             }
             return wrapper;
         },
@@ -109,17 +111,34 @@ Module.register("MMM-Losung",
         },
 
         socketNotificationReceived: function (notification, payload) {
-            console.log(notification, payload)
+            console.log(this.name, notification, payload)
             let self = this;
             if (notification === 'Error')
                 console.log(self.name, "Error in helper Module", payload)
-            else if (notification === 'Data') {
+            else if (notification === 'FileData') {
                 // Get all MoravianData for 1 year.
                 self.MoravianData = payload
                 self.updateDailyMoravian();
                 self.updateDom();
+            }
+            else if (notification === 'WebData') {
+                console.log("WEBDatarecived", notification, payload);
+                const findStr = `<td><p><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="-1" color="#000000">`;
+                const pos = payload.search(findStr)
+                console.log("Pos",pos)
+                console.log("Sliced",payload.slice(pos))
+
+                let split = payload.split("<tr><td>&nbsp;</td></tr>");
+                split.shift();
+                const start = split[0].search("<b>") + 3
+                const end = split[0].search("</font>")
+                console.log("split1",split)
+
+                let sliced = split[0].slice(start,end).replace('</b><br>', '');
+                console.log("sliced",sliced)
 
             }
+
             else {
                 console.log(self.name, "Undefined Function", payload)
             }
@@ -131,12 +150,17 @@ Module.register("MMM-Losung",
             const actDate = new Date();//new Date("2021-12-18");
             // console.log(actDate)
             const DayOfYear = self.daysIntoYear(actDate) - 1; // start from Zero in the array
-            self.DailyMoravian = self.MoravianData[DayOfYear];
-
-          
-            
+            if (self.MoravianData === null || self.MoravianData === undefined)
+                console.error('MoravianData', self.MoravianData)
+            else
+                self.DailyMoravian = self.MoravianData[DayOfYear];
 
         },
+
+        _getWebData() {
+            
+        },
+
 
         /**
          * Calculate the day of the year
