@@ -5,8 +5,10 @@ var parser = require('xml2json');
 
 module.exports = NodeHelper.create({
     start: function () {
-        console.log('MMM-cookbook helper started ...');
+        console.log('MMM-Losung helper started ...');
     },
+
+    // ADD : https://www.losungen.de/download/skriptloesungen/
 
     getCommute: function (filename) {
         var self = this;
