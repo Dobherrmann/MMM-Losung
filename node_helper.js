@@ -5,7 +5,7 @@ var parser = require('xml2json');
 
 module.exports = NodeHelper.create({
     start: function () {
-        console.log('MMM-Losung helper started ...');
+        console.log('MMM-LosungV1 helper started ...');
     },
 
     // ADD : https://www.losungen.de/download/skriptloesungen/
