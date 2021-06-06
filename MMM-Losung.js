@@ -41,6 +41,10 @@ Module.register("MMM-Losung",
         getData: function (self) {
             self.MoravianData = null;
             self.DailyMoravian = null;
+
+            self.DailyVerse = null;
+            self.DailyTeachingText = null;
+
             // self.sendSocketNotification('OpenFile', self.defaults.filename);
             self.sendSocketNotification('GetDataFromWeb', 'dummyURL');
             // self._getWebData()
@@ -122,40 +126,14 @@ Module.register("MMM-Losung",
                 self.updateDom();
             }
             else if (notification === 'WebData') {
-                console.log("WEBDatarecived", notification, payload);
-                const findStr = `<td><p><font face="Arial,Helvetica,Geneva,Swiss,SunSans-Regular" size="-1" color="#000000">`;
-                const pos = payload.search(findStr)
-                console.log("Pos", pos)
-                console.log("Sliced", payload.slice(pos))
-
-                let split = payload.split("<tr><td>&nbsp;</td></tr>");
-                split.shift();
-                // const start = split[0].search("<b>") + 3
-                // const end = split[0].search("</font>")
-                // console.log("split",split)
-
-                // Zerlegen
-                // let sliced = split[0].slice(start,end);
-                // console.log("sliced",sliced)
-
-                // const verseEnd = sliced.search("</b>");
-                // const verseSplited = sliced.split("</b>");
-                // const dailyverse = verseSplited[0];
-                // const verse = verseSplited[1].replace("<br>","")
-                // console.log("dailyverse",dailyverse);
-                // console.log("verse",verse);
-
-                const tmp = this._getVerse(split[0]);
-                console.log("tmp",tmp)
-
-                self.DailyMoravian.Losungstext.$t = tmp[0];
-                self.DailyMoravian.Losungsvers.$t = tmp[1];
-
-                // const dailyTextElement = self._createElement(['Losung:', self.DailyMoravian.Losungstext.$t, self.DailyMoravian.Losungsvers.$t], 'moravian');
-                // wrapper.appendChild(dailyTextElement);
-                // const teachingTextElement = self._createElement(['Lehrtext:', self.DailyMoravian.Lehrtext.$t, self.DailyMoravian.Lehrtextvers.$t], 'teaching');
-                // wrapper.appendChild(teachingTextElement);
-
+                // console.log("WEBDatarecived", notification, payload);
+                // Remove WebHeader
+                const rawHTMLCode = payload.split("<tr><td>&nbsp;</td></tr>");
+                rawHTMLCode.shift();
+                
+                self.DailyVerse = this._getVerse(rawHTMLCode[0]);
+                self.DailyTeachingText = this._getVerse(rawHTMLCode[1]);
+                console.log("daily", self.DailyVerse, self.DailyTeachingText)
             }
 
             else {
@@ -168,14 +146,14 @@ Module.register("MMM-Losung",
             const end = rawHTMLVerse.search("</font>")
             // console.log("split", split)
             let sliced = rawHTMLVerse.slice(start, end);
-            console.log("sliced", sliced)
+            // console.log("sliced", sliced)
 
             const verseEnd = sliced.search("</b>");
             const verseSplited = sliced.split("</b>");
             const dailyverse = verseSplited[0];
             const verse = verseSplited[1].replace("<br>", "")
-            console.log("dailyverse", dailyverse);
-            console.log("verse", verse);
+            // console.log("dailyverse", dailyverse);
+            // console.log("verse", verse);
             return [dailyverse, verse];
         },
 
