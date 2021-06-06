@@ -55,7 +55,7 @@ Module.register("MMM-Losung",
                 const month = (actDate.getMonth()+1) < 10 ? `0${(actDate.getMonth()+1).toString()}`: (actDate.getMonth()+1).toString();
 
                 const url = `https://www.losungen.de/fileadmin/media-losungen/heute/${actDate.getFullYear()}/${month}${day}.html`
-                console.log("url", url)
+                // console.log("url", url)
                 self.sendSocketNotification('GetDataFromWeb', url);
             }
             else
