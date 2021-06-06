@@ -31,10 +31,8 @@ module.exports = NodeHelper.create({
 
     async _getWebData(webURL) {
         var self = this;
-
-        // const url = webURL;
-        // const url = 'https://ipinfo.io/json';
-        const url =  'https://www.losungen.de/fileadmin/media-losungen/heute/2021/0605.html';
+        const url = webURL;
+        // const url =  'https://www.losungen.de/fileadmin/media-losungen/heute/2021/0605.html';
         try {
             let response = await fetch(url); // Gets a promise
             const tmp = await response.text(); // Replaces body with response,
@@ -44,22 +42,6 @@ module.exports = NodeHelper.create({
           } catch (err) {
             console.log('Fetch error:' + err); // Error handling
           }
-        // await fetch(url)
-        //     .then(function (response) {
-        //         self.sendSocketNotification('WebData', response.text());
-        //         return response.text();
-        //     })
-        //     .then(function (html) {
-        //         console.log(html);
-        //         self.sendSocketNotification('WebData', html);
-
-        //     })
-        //     .catch(function (error) {
-        //         self.sendSocketNotification('WebData', ["Error: " + error]);
-        //         console.log("Error: " + error);
-        //     });
-
-
     },
 
     socketNotificationReceived: function (notification, payload) {
@@ -69,7 +51,6 @@ module.exports = NodeHelper.create({
         else if (notification === 'GetDataFromWeb'){
             this._getWebData(payload);
         }
-            
         else
             self.sendSocketNotification('Error', 'File not opend');
     }
