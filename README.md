@@ -39,7 +39,7 @@ To use this module, add the following configuration block to the modules array i
 | `updateInterval` | *Optional* - The rate (in ms) in which the module will refresh the train data.
 | `showDailyText` | *Optional* - Show daily bible verse
 | `showTeachingText` |  *Optional* - Show additional teaching text
-| `getDataOnline` | If true -Get the daily bible verse from online webpage of http://www.losungen.de/heute.php . If false get data from xml File.
+| `getDataOnline` | If true get the daily bible verse from online webpage of http://www.losungen.de/heute.php . If false get data from xml File.
 | `filename` | Add the filename of the *xml file with all 'Losungen' (daily bible verses) (Needed if the you want to read the daily bible verse from the xml file)
 
 ## Additional informations 
