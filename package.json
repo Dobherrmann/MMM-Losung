@@ -1,5 +1,25 @@
 {
   "dependencies": {
+    "node-fetch": "^3.0.0",
     "xml2json": "^0.12.0"
-  }
+  },
+  "name": "MMM-Losung",
+  "description": "This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/). It will display the daily verse of the day from  www.losungen.de (direct link: https://www.losungen.de/download/). You have to download the *.xml file from their website and place that *.xml file in the root folder of the module.",
+  "version": "1.0.0",
+  "main": "MMM-Losung.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dobherrmann/MMM-Losung.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dobherrmann/MMM-Losung/issues"
+  },
+  "homepage": "https://github.com/Dobherrmann/MMM-Losung#readme"
 }

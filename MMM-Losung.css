@@ -1,11 +1,11 @@
 .MMM-Losung {
-  display: block;
+  display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
-  margin: 0;
+  /* width: 100%;
+  height: 100%; */
+  /* margin: 0; */
   padding: 0;
-  position: relative;
+  /* position: relative; */
   /* align-items: center;
   justify-content: center;
   justify-self: center; */
