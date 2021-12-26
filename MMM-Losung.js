@@ -2,10 +2,8 @@ Module.register("MMM-Losung",
     {
         defaults: {
             updateInterval: 10000, // 3 * 1000 -> 60s
-            filename: '',
             showDailyText: true,
             showTeachingText: true,
-            getDataOnline: true,
         },
 
         /**
@@ -46,20 +44,17 @@ Module.register("MMM-Losung",
             self.DailyVerse = null;
             self.DailyTeachingText = null;
 
-            if (self.config.getDataOnline) {
-                const actDate = new Date();
+            
+           const actDate = new Date();
 
-                // Set URL for web request
-                // const url = 'https://www.losungen.de/fileadmin/media-losungen/heute/2021/0605.html';
-                const day = actDate.getDate() < 10 ? `0${actDate.getDate().toString()}`: actDate.getDate().toString();
-                const month = (actDate.getMonth()+1) < 10 ? `0${(actDate.getMonth()+1).toString()}`: (actDate.getMonth()+1).toString();
+           // Set URL for web request
+           // const url = 'https://www.losungen.de/fileadmin/media-losungen/heute/2021/0605.html';
+           const day = actDate.getDate() < 10 ? `0${actDate.getDate().toString()}`: actDate.getDate().toString();
+           const month = (actDate.getMonth()+1) < 10 ? `0${(actDate.getMonth()+1).toString()}`: (actDate.getMonth()+1).toString();
 
-                const url = `https://www.losungen.de/fileadmin/media-losungen/heute/${actDate.getFullYear()}/${month}${day}.html`
-                // console.log("url", url)
-                self.sendSocketNotification('GetDataFromWeb', url);
-            }
-            else
-                self.sendSocketNotification('OpenFile', self.defaults.filename);
+           const url = `https://www.losungen.de/fileadmin/media-losungen/heute/${actDate.getFullYear()}/${month}${day}.html`
+           // console.log("url", url)
+           self.sendSocketNotification('GetDataFromWeb', url);
 
         },
 
@@ -122,14 +117,6 @@ Module.register("MMM-Losung",
             let self = this;
             if (notification === 'Error')
                 console.error(self.name, "Error in helper Module", payload)
-            else if (notification === 'FileData') {
-                // Get all MoravianData for 1 year.
-                self.MoravianData = payload
-                self.DailyVerse = [];
-                self.DailyTeachingText = [];
-                self.updateDailyMoravianFromXML();
-                self.updateDom();
-            }
             else if (notification === 'WebData') {
                 // console.log("WEBDatarecived", notification, payload);
                 // Remove WebHeader
@@ -149,24 +136,7 @@ Module.register("MMM-Losung",
 
 
         //#region private functions
-        updateDailyMoravianFromXML() {
-            let self = this;
-            // const actDate new Date("2021-12-18"); // Simulation of dates
-            const actDate = new Date();//new Date("2021-12-18");
-            // console.log(actDate)
-            const DayOfYear = self.daysIntoYear(actDate) - 1; // start from Zero in the array
-            if (self.MoravianData === null || self.MoravianData === undefined)
-                console.error('MoravianData', self.MoravianData)
-            else {
-                self.DailyMoravian = self.MoravianData[DayOfYear];
-                self.DailyVerse[0] = self.DailyMoravian.Losungstext.$t;
-                self.DailyVerse[1] = self.DailyMoravian.Losungsvers.$t;
-
-                self.DailyTeachingText[0] = self.DailyMoravian.Lehrtext.$t;
-                self.DailyTeachingText[1] = self.DailyMoravian.Lehrtextvers.$t;
-            }
-        },
-
+       
         /**
          * Calculate the day of the year
          * @param {*} date Acutal date
