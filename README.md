@@ -39,4 +39,4 @@ To use this module, add the following configuration block to the modules array i
 | `showTeachingText` |  *Optional* - Show additional teaching text
 
 ## Additional informations 
-Have fun with you daily input :)
+Have fun with your daily input :)
